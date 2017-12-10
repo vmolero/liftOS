@@ -3,9 +3,11 @@ import socketserver
 
 class LiftOSHandler(socketserver.StreamRequestHandler):
     data = None
+    liftos = None
 
-    def __init__(self):
+    def __init__(self, liftos):
         self.data = None
+        self.liftos = liftos
 
     def handle(self):
         # self.rfile is a file-like object created by the handler;
