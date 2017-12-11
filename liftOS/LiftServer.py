@@ -1,6 +1,6 @@
 import socketserver
-from liftOS import LiftOS
-from liftOS import LiftOSHandler
+from .LiftOS import LiftOS
+from .LiftOSHandler import LiftOSHandler
 
 
 class LiftServer:

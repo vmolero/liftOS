@@ -1,9 +1,14 @@
-build:
-	docker build --no-cache -t liftos:1.0 .
+python=./venv/bin/python3.5
 
-run:
-	./venv/bin/python3.5 liftOS/__init__.py
+build:
+	$(python) setup.py build
+
+server:
+	$(python) -m liftOS 
+
+client:
+	$(python) -m liftOS/client.py ${ARGS} 
 
 test:
-	./venv/bin/python3.5 -m unittest discover
+	$(python) -m unittest discover
 

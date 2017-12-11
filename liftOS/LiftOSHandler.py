@@ -1,11 +1,12 @@
 import socketserver
+from .LiftOS import LiftOS
 
 
 class LiftOSHandler(socketserver.StreamRequestHandler):
     data = None
     liftos = None
 
-    def __init__(self, liftos):
+    def __init__(self, liftos: LiftOS):
         self.data = None
         self.liftos = liftos
 

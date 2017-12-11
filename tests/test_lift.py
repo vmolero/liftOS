@@ -14,7 +14,7 @@ class TestLift(unittest.TestCase):
 
     def test_moving(self):
         self.__lift.move_to(1)
-        assert self.__lift.get_status() == LiftState.MOVING
+        assert self.__lift.get_status() == LiftState.IDLE
 
     def test_get_position(self):
         assert self.__lift.get_position() == 0
