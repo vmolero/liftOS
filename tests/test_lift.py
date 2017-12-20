@@ -1,10 +1,9 @@
 import unittest
-from liftOS.Lift import Lift
-from liftOS.LiftState import LiftState
+from LiftOS.Lift import Lift
+from LiftOS.LiftState import LiftState
 
 
 class TestLift(unittest.TestCase):
-    __lift = None
 
     def setUp(self):
         self.__lift = Lift(0, 1)

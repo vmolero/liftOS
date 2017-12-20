@@ -1,10 +1,9 @@
 import unittest
-from liftOS import LiftOS
-from liftOS import Lift
+from LiftOS import LiftOS
+from LiftOS import Lift
 
 
 class TestLiftOS(unittest.TestCase):
-    liftOS = None
 
     def setUp(self):
         self.liftOS = LiftOS.LiftOS(2, 1)
