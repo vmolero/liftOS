@@ -1,4 +1,4 @@
-from .LiftServer import LiftServer
+from LiftOS.LiftServer import LiftServer
 
 
 def main():

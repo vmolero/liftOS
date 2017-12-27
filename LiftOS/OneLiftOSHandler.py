@@ -1,9 +1,9 @@
-import LiftOS.LiftOSHandler
-import LiftOS.Lift
+from LiftOS.LiftOSHandler import LiftOSHandler
+from LiftOS.Lift import Lift
 
 
-class OneLiftOSHandler(LiftOS.LiftOSHandler):
+class OneLiftOSHandler(LiftOSHandler):
 
     def use(self):
-        return LiftOS.Lift(5, 1)
+        return Lift(5, 1)
 

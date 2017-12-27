@@ -13,8 +13,14 @@ class LiftClient:
             sock.sendall(bytes(command + "\n", "utf-8"))
             print("Sent:     {}".format(command))
             # Receive data from the server and shut down
-            received = str(sock.recv(1024), "utf-8")
-            print("Received: {}".format(received))
+            busy = True
+            while busy:
+                received = str(sock.recv(1024), "utf-8")
+                if received == 'free':
+                    busy = False
+                    print("Status: Free")
+
+                print("Received: {}".format(received))
             return True
         except ConnectionRefusedError:
             return False

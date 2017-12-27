@@ -1,11 +1,14 @@
 import time
-from .LiftState import LiftState
+from threading import Lock
+from LiftOS.LiftState import LiftState
 
 
 class Lift:
 
     def __init__(self, idl: str, speed: int):
+        self.__lock = Lock()
         self.__id = idl
+        self.name = "Lift" + str(idl)
         self.__speed = speed
         self.__floor = 0
         self.__state = LiftState.IDLE
@@ -27,3 +30,12 @@ class Lift:
     def get_status(self) -> LiftState:
         return self.__state
 
+    def acquire(self):
+        # print >> sys.stderr, "acquired", self
+        # traceback.print_tb
+        self.__lock.acquire()
+
+    def release(self):
+        # print >> sys.stderr, "released", self
+        # traceback.print_tb
+        self.__lock.release()

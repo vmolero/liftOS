@@ -1,14 +1,17 @@
-from .Lift import Lift
+from LiftOS.Lift import Lift
+import threading
 
 
-class LiftOS:
+class LiftOS(threading.Thread):
 
-    def __init__(self, floors, lift_number):
-        self.__floors = floors
-        self.__lift_number = lift_number
+    def __init__(self, target):
+        threading.Thread.__init__(self, target=target)
         self.__commands = []
         self.__current_floor = 0
         self.__lifts = []
+
+    def run(self):
+        pass
 
     def command(self, command: str) -> bool:
         self.__commands.append(command)
