@@ -1,12 +1,22 @@
 # liftOS
-Lift management. Concurrency problems.
+Lift management. 
 
-1 lift
-5 floor building
-Lift actions
-Up
-Down
-Open door
-Close door
+Run the server:
 
-only one request system
+$ python -m LiftOS
+
+Run the clients:
+
+$ python -m LiftClient < LiftClient/input1.txt
+$ python -m LiftClient < LiftClient/input2.txt
+
+## Inputs
+------
+
+Input file format as follows:
+
+<IdUser> <StartingFloor> <UserWeight>
+<NumberOfLinesToProcess>
+<FloorToMove> <TimeInSecBeforeCallingAgain>
+<FloorToMove> <TimeInSecBeforeCallingAgain>
+...
