@@ -1,4 +1,5 @@
-python="./venv/bin/python3"
+# python="./venv/bin/python3"
+python=python
 
 build:
 	$(python) setup.py build

@@ -1,35 +1,15 @@
 import socketserver
 import threading
 
-
 class LiftOSHandler(socketserver.StreamRequestHandler):
+  # @see https://stackoverflow.com/questions/5480456/proper-way-to-add-functionality-to-handle-in-a-python-tcp-server#5480999
+  def __init__(self, callback, *args, **keys):
+    self.callback = callback
+    socketserver.BaseRequestHandler.__init__(self, *args, **keys)
 
-    def use(self):
-        raise NotImplementedError("Please Implement `Handler::use` this method")
-
-    def handle(self):
-        # self.rfile is a file-like object created by the handler;
-        # we can now use e.g. readline() instead of raw recv() calls
-        try:
-            liftOS = self.use()
-        except NotImplementedError as exception:
-            print(str(exception))
-        data = self.rfile.readline().strip()
-        if data == 'start':
-            liftOS.start()
-
-        while False:
-            pass
-           # self.__data = self.rfile.readline().strip()
-           # if len(self.__data) == 0:
-           #     break
-           # print(self.__data)
-            # Likewise, self.wfile is a file-like object used to write back
-            # to the client
-           # self.wfile.write(self.__data.upper())
-        self.wfile.write(bytes('free', 'ascii'))
-
-        print("{} wrote:".format(self.client_address[0]))
-        data = str(self.request.recv(1024), 'ascii')
-        response = bytes("{}: {}".format(liftOS.name, data), 'ascii')
-        self.request.sendall(response)
+  def handle(self):
+    # self.rfile is a file-like object created by the handler;
+    # we can now use e.g. readline() instead of raw recv() calls
+    data = str(self.rfile.readline().strip(), 'utf-8')
+    response = bytes(self.callback(data), 'utf-8')
+    self.request.sendall(response)
